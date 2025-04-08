@@ -1,0 +1,237 @@
+% ========== 文档类和基本设置 ==========
+\documentclass[12pt]{ctexart}
+\usepackage{geometry,tikz,graphicx,tabularx,float,xcolor,color,colortbl,cite,booktabs,colortbl}
+\usepackage{subcaption,multirow,fancyhdr,gensymb,amsmath,pythonhighlight,multicol,makecell}
+\usepackage[hyphens]{url}
+\usepackage{seqsplit}
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,breaklinks=true]{hyperref}
+\usepackage{xurl}
+% 【注意】使用minted包需要先安装Python和Pygments库，编译时需要在终端或者编辑器设置里添加--shell-escape参数
+\usepackage[cache=false]{minted}
+\usepackage[T1]{fontenc}
+
+% =============================================
+% ========== 【重要】个人信息设置区域 ==========
+% =============================================
+% 【修改提示】请将下面的"一个学院"等占位符替换为您自己的实际信息
+\newcommand{\school}{一个学院}        % 修改为您所在的学院名称，如"计算机学院"
+\newcommand{\major}{一个年级专业}     % 修改为您的年级和专业，如"2023级计算机科学与技术"  
+\newcommand{\righthead}{一个页眉标题} % 修改为您希望在页眉右侧显示的标题，如"程序设计实验报告"
+\newcommand{\maintitle}{一个大标题}   % 修改为您的报告主标题，如"数据结构与算法分析实验报告"
+\newcommand{\course}{一个课程}        % 修改为您的课程名称，如"数据结构与算法"
+\newcommand{\teacher}{一个老师}       % 修改为您的指导老师姓名
+\newcommand{\expnumber}{一个报告类型} % 修改为报告编号或类型，如"实验一"或"期末项目"
+\newcommand{\name}{一个名字}          % 修改为您的姓名
+\newcommand{\id}{一个学号}            % 修改为您的学号
+
+% 【日期设置】以下两行选择一种使用，另一种请注释掉（行首添加%）
+% \newcommand{\customdate}{\today}     % 使用当前系统日期（推荐）
+\newcommand{\customdate}{2034年2月12日} % 使用自定义日期，修改为您需要的日期格式
+% =============================================
+
+% ========== 文档格式设置，一般不需要修改 ==========
+% 设置段落首行缩进为2em
+\setlength{\parindent}{2em}
+% 页面边距设置
+\geometry{left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm}
+\geometry{headsep=1.2cm}
+% 设置页眉页脚样式
+\pagestyle{fancy}
+\setlength{\headheight}{33pt}
+% 设置页眉左侧为校徽图片
+\lhead{\includegraphics[width=34.7mm]{figure/badge-horizonal.pdf}}
+% 设置页眉右侧标题，使用上面定义的\righthead变量
+\rhead{\righthead}
+
+% 定义带下划线的表单项，用于封面信息展示
+\makeatletter
+\newcommand\dlmu[2][4cm]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\makeatother
+
+% 超链接颜色设置和代码块样式设置
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=green}
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+% 设置代码块样式：背景色、行号、自动换行
+\setminted{
+    bgcolor=codebg,
+    linenos,
+    breaklines,
+    breakanywhere,
+}
+
+\begin{document}
+% 全局使用sloppypar防止文本溢出页面边界
+\begin{sloppypar} 
+
+% ========== 封面页设计，一般不需要修改结构 ==========
+\begin{titlepage}
+    \centering
+    % 插入学校校徽，如需更换请替换figure/badge.pdf文件
+    \includegraphics[width=9cm]{figure/badge.pdf}
+    % 大标题显示，使用上面定义的\maintitle变量
+    \\[1cm]\textbf{\huge{\maintitle}}\\[1cm]
+    \begin{minipage}{11.1cm}
+        \centering
+        \begin{flushleft} \Large
+            % 以下是表单项，会自动填入上面定义的个人信息
+            \makebox[3cm][s]{\textbf{\fangsong{学院：}}}\dlmu[8cm]{\school}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{年级专业：}}}\dlmu[8cm]{\major}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{课程：}}}\dlmu[8cm]{\course}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{指导老师：}}}\dlmu[8cm]{\teacher}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{报告编号：}}}\dlmu[8cm]{\expnumber}\\[0.3cm]            
+            \makebox[3cm][s]{\textbf{\fangsong{小组成员：}}}\dlmu[8cm]{\name}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{学号：}}}\dlmu[8cm]{\id}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{日期：}}}\dlmu[8cm]{\customdate}\\[0.3cm]
+        \end{flushleft}
+    \end{minipage}
+    \newpage
+\end{titlepage}
+
+% ========== 目录设置 ==========
+% 将目录名称设置为中文"目录"
+\renewcommand{\contentsname}{目录}
+% 目录页使用罗马数字编号（i, ii, iii...）
+\pagenumbering{roman} 
+% 第一页不显示页码
+\thispagestyle{empty}
+% 生成目录，自动包含所有section, subsection等
+\tableofcontents
+\newpage
+% 正文开始使用阿拉伯数字页码（1, 2, 3...）
+\pagenumbering{arabic} 
+% 设置目录中的超链接为红色
+\hypersetup{linkcolor=red}
+
+% ==========================================
+% ========== 【重要】正文内容开始 ==========
+% ==========================================
+% 【修改提示】以下是正文示例，您应该根据自己的需求修改或替换这些内容
+
+\section{基本元素示例}
+
+\subsection{文本与段落}
+这是一个基本的段落示例。LaTeX会自动处理段落间距和断行。
+
+\subsection{章节与子章节}
+文档可以使用\verb|\section{}|、\verb|\subsection{}|和\verb|\subsubsection{}|进行结构化。
+
+\subsection{代码展示}
+% 【代码示例】可以根据需要修改为您自己的代码
+% 使用minted环境显示代码，{python}指定语言，支持多种编程语言
+\begin{minted}{python}
+def hello_world():
+    print("Hello, World!")
+    
+if __name__ == "__main__:
+    hello_world()
+\end{minted}
+
+% 行内代码示例，适合短小的代码片段
+行内代码示例：\mintinline{python}{print('Hello')}
+
+\subsection{图片与表格}
+\subsubsection{图片示例}
+% 【图片插入示例】
+% figure环境用于插入图片，[h!]参数尝试将图片放在当前位置
+% 将figure/badge-horizonal.pdf替换为您自己的图片路径
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figure/badge-horizonal.pdf}
+    \caption{图片示例}  % 图片标题
+    \label{fig:example} % 图片标签，用于交叉引用，如\ref{fig:example}
+\end{figure}
+
+\subsection{表格示例}
+% 使用说明：在LaTeX文档中，表格往往是浮动的，可能不会严格地出现在源代码位置
+% 为了确保表格出现在指定位置，推荐使用[H]定位符（所需的float包已导入）
+% [H]定位符强制表格精确地放在代码中指定的位置，不会浮动
+
+\subsubsection{三线表}
+% 三线表是学术出版物中常用的表格样式，由顶线、中线和底线组成
+% 【表格示例1】可以替换为您自己的数据
+\begin{table}[H]
+    \centering
+    \caption{三线表示例}
+    \label{tab:example}
+    \begin{tabular}{ccc}   % {ccc}表示三列均居中对齐，可使用l(左)、c(中)、r(右)
+        \toprule        % 顶线
+        \textbf{A} & \textbf{B} & \textbf{C} \\
+        \midrule        % 中线
+        1 & 2 & 3 \\
+        4 & 5 & 6 \\
+        \bottomrule     % 底线
+    \end{tabular}
+\end{table}
+
+\subsubsection{自适应宽度表格}
+% 这种表格会自动调整宽度以适应页面，适合包含长文本的表格
+% 注意：使用自适应宽度表格需要加载tabularx宏包
+% 【表格示例2】可以替换为您自己的数据
+\begin{table}[H]
+    \centering
+    \caption{自适应宽度表格示例}
+    \label{tab:adaptive}
+    \begin{tabularx}{\textwidth}{|l|X|}  % l表示左对齐，X表示自动调整宽度
+        \hline
+        \textbf{项目} & \textbf{描述} \\
+        \hline
+        项目一 & 这是一个自动调整宽度的表格单元格，可以容纳较长的文本内容而不会溢出testtesttesttest \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\subsection{数学公式}
+% 【公式示例】可以替换为您需要的公式
+% 行内公式使用$...$包围
+行内公式：$E=mc^2$
+
+% 行间公式使用equation环境，会自动编号
+行间公式：
+\begin{equation}
+    F = G\frac{m_1 m_2}{r^2}
+\end{equation}
+
+\section{高级功能}
+\subsection{超长文本处理}
+% 处理超长单词，防止排版溢出
+对于超长单词可使用\verb|\seqsplit{}|命令：\seqsplit{supercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocious}
+
+% 长URL示例，会自动换行
+长URL示例：\url{https://www.example.com/very/long/path/that/might/cause/problems}
+
+\subsection{网页链接}
+% 【链接示例】可以替换为您需要的链接
+% 纯网址链接
+纯网址链接：\url{https://www.sysu.edu.cn}
+
+% 带自定义文本的链接
+自定义文本链接：\href{https://www.sysu.edu.cn}{中山大学官网}
+
+\section{参考文献引用}
+\subsection{引用示例}
+% 【注意】引用前需确保在main.bib文件中有对应的参考文献条目
+% 单一文献引用
+单一引用：\cite{knuth1986texbook}
+
+% 多文献同时引用
+多文献引用：\cite{vaswani2017attention,brown2020language}
+
+% 带页码的引用
+带页码引用：\cite[pp. 45-47]{wang2010zhongwen}
+
+% ==========================================
+% ========== 正文内容结束 ==========
+% ==========================================
+
+% ========== 参考文献部分 ==========
+\newpage
+% 将参考文献添加到目录中
+\addcontentsline{toc}{section}{参考文献}
+% 使用plain引用样式
+\bibliographystyle{plain}
+% 使用main.bib文件作为参考文献数据库
+% 【注意】需要确保main.bib文件存在且包含您引用的所有文献
+\bibliography{main}
+
+\end{sloppypar}
+\end{document}
