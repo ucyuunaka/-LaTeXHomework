@@ -22,7 +22,7 @@
 \newcommand{\teacher}{一个老师}       % 修改为您的指导老师姓名
 \newcommand{\expnumber}{一个报告类型} % 修改为报告编号或类型，如"实验一"或"期末项目"
 \newcommand{\name}{你好、世界、我是、张三、哈哈、你不、认识我啊}          % 修改为您的姓名
-\newcommand{\id}{20230001、20230002、20230003、20230004、20230005、20230006、20230007}            % 修改为您的学号
+\newcommand{\id}{20230001、20230002、20230003、20230004、20230005、20230006、20230007}             % 修改为您的学号
 
 % 【日期设置】以下两行选择一种使用，另一种请注释掉（行首添加%）
 % \newcommand{\customdate}{\today}     % 使用当前系统日期（推荐）
@@ -44,8 +44,25 @@
 \rhead{\righthead}
 
 % 定义带下划线的表单项，用于封面信息展示
+% 自动调整字体大小以适应固定宽度的下划线容器
+\usepackage{calc}
 \makeatletter
-\newcommand\dlmu[2][4cm]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\dlmu[2][4cm]{%
+  \sbox0{#2}% 测量文本宽度
+  \ifdim\wd0>#1\relax
+    \hskip1pt\underline{%
+      \hb@xt@ #1{%
+        \hss\resizebox*{#1}{!}{\mbox{#2}}\hss%
+      }%
+    }\hskip3pt%
+  \else
+    \hskip1pt\underline{%
+      \hb@xt@ #1{%
+        \hss#2\hss%
+      }%
+    }\hskip3pt%
+  \fi
+}
 \makeatother
 
 % 超链接颜色设置和代码块样式设置
