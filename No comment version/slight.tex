@@ -1,0 +1,183 @@
+\documentclass[12pt]{ctexart}
+\usepackage{geometry,tikz,graphicx,tabularx,float,xcolor,color,colortbl,cite,booktabs,colortbl}
+\usepackage{subcaption,multirow,fancyhdr,gensymb,amsmath,pythonhighlight,multicol,makecell}
+\usepackage[hyphens]{url}
+\usepackage{seqsplit}
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,breaklinks=true]{hyperref}
+\usepackage{xurl}
+\usepackage[cache=false]{minted}
+\usepackage[T1]{fontenc}
+
+\newcommand{\school}{一个学院}
+\newcommand{\major}{一个年级专业}
+\newcommand{\righthead}{一个页眉标题}
+\newcommand{\maintitle}{一个大标题}
+\newcommand{\course}{一个课程}
+\newcommand{\teacher}{一个老师}
+\newcommand{\expnumber}{一个报告类型}
+\newcommand{\name}{你好、世界、我是、张三、哈哈、你不、认识我啊}
+\newcommand{\id}{20230001、20230002、20230003、20230004、20230005、20230006、20230007}
+
+\newcommand{\customdate}{2034年2月12日}
+
+\setlength{\parindent}{2em}
+\geometry{left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm}
+\geometry{headsep=1.2cm}
+\pagestyle{fancy}
+\setlength{\headheight}{33pt}
+\lhead{\includegraphics[width=34.7mm]{figure/badge-horizonal.pdf}}
+\rhead{\righthead}
+
+\usepackage{calc}
+\makeatletter
+\newcommand\dlmu[2][4cm]{%
+  \sbox0{#2}
+  \ifdim\wd0>#1\relax
+    \hskip1pt\underline{%
+      \hb@xt@ #1{%
+        \hss\resizebox*{#1}{!}{\mbox{#2}}\hss%
+      }%
+    }\hskip3pt%
+  \else
+    \hskip1pt\underline{%
+      \hb@xt@ #1{%
+        \hss#2\hss%
+      }%
+    }\hskip3pt%
+  \fi
+}
+\makeatother
+
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=green}
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\setminted{
+    bgcolor=codebg,
+    linenos,
+    breaklines,
+    breakanywhere,
+}
+
+\begin{document}
+\begin{sloppypar} 
+
+\begin{titlepage}
+    \centering
+    \includegraphics[width=9cm]{figure/badge.pdf}
+    \\[1cm]\textbf{\huge{\maintitle}}\\[1cm]
+    \begin{minipage}{11.1cm}
+        \centering
+        \begin{flushleft} \Large
+            \makebox[3cm][s]{\textbf{\fangsong{学院：}}}\dlmu[8cm]{\school}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{年级专业：}}}\dlmu[8cm]{\major}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{课程：}}}\dlmu[8cm]{\course}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{指导老师：}}}\dlmu[8cm]{\teacher}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{报告编号：}}}\dlmu[8cm]{\expnumber}\\[0.3cm]            
+            \makebox[3cm][s]{\textbf{\fangsong{小组成员：}}}\dlmu[8cm]{\name}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{学号：}}}\dlmu[8cm]{\id}\\[0.3cm]
+            \makebox[3cm][s]{\textbf{\fangsong{日期：}}}\dlmu[8cm]{\customdate}\\[0.3cm]
+        \end{flushleft}
+    \end{minipage}
+    \newpage
+\end{titlepage}
+
+\renewcommand{\contentsname}{目录}
+\pagenumbering{roman} 
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\pagenumbering{arabic} 
+\hypersetup{linkcolor=red}
+
+\section{基本元素示例}
+
+\subsection{文本与段落}
+这是一个基本的段落示例。LaTeX会自动处理段落间距和断行。
+
+\subsection{章节与子章节}
+文档可以使用\verb|\section{}|、\verb|\subsection{}|和\verb|\subsubsection{}|进行结构化。
+
+\subsection{代码展示}
+\begin{minted}{python}
+def hello_world():
+    print("Hello, World!")
+    
+if __name__ == "__main__:
+    hello_world()
+\end{minted}
+
+行内代码示例：\mintinline{python}{print('Hello')}
+
+\subsection{图片与表格}
+\subsubsection{图片示例}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figure/badge-horizonal.pdf}
+    \caption{图片示例}
+    \label{fig:example}
+\end{figure}
+
+\subsection{表格示例}
+
+\subsubsection{三线表}
+\begin{table}[H]
+    \centering
+    \caption{三线表示例}
+    \label{tab:example}
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{A} & \textbf{B} & \textbf{C} \\
+        \midrule
+        1 & 2 & 3 \\
+        4 & 5 & 6 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{自适应宽度表格}
+\begin{table}[H]
+    \centering
+    \caption{自适应宽度表格示例}
+    \label{tab:adaptive}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \textbf{项目} & \textbf{描述} \\
+        \hline
+        项目一 & 这是一个自动调整宽度的表格单元格，可以容纳较长的文本内容而不会溢出testtesttesttest \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\subsection{数学公式}
+行内公式：$E=mc^2$
+
+行间公式：
+\begin{equation}
+    F = G\frac{m_1 m_2}{r^2}
+\end{equation}
+
+\section{高级功能}
+\subsection{超长文本处理}
+对于超长单词可使用\verb|\seqsplit{}|命令：\seqsplit{supercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocioussupercalifragilisticexpialidocious}
+
+长URL示例：\url{https://www.example.com/very/long/path/that/might/cause/problems}
+
+\subsection{网页链接}
+纯网址链接：\url{https://www.sysu.edu.cn}
+
+自定义文本链接：\href{https://www.sysu.edu.cn}{中山大学官网}
+
+\section{参考文献引用}
+\subsection{引用示例}
+单一引用：\cite{knuth1986texbook}
+
+多文献引用：\cite{vaswani2017attention,brown2020language}
+
+带页码引用：\cite[pp. 45-47]{wang2010zhongwen}
+
+\newpage
+\addcontentsline{toc}{section}{参考文献}
+\bibliographystyle{plain}
+\bibliography{main}
+
+\end{sloppypar}
+\end{document}
