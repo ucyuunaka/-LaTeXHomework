@@ -1,3 +1,4 @@
+% ========== 文档类和基本设置 ==========
 \documentclass[12pt]{ctexart}
 \usepackage{geometry,tikz,graphicx,tabularx,float,xcolor,color,colortbl,cite,booktabs,colortbl}
 \usepackage{subcaption,multirow,fancyhdr,gensymb,amsmath,pythonhighlight,multicol,makecell}
@@ -8,6 +9,9 @@
 \usepackage[cache=false]{minted}
 \usepackage[T1]{fontenc}
 
+% =============================================
+% ========== 【重要】个人信息设置区域 ==========
+% =============================================
 \newcommand{\school}{一个学院}
 \newcommand{\major}{一个年级专业}
 \newcommand{\righthead}{一个页眉标题}
@@ -18,8 +22,12 @@
 \newcommand{\name}{你好、世界、我是、张三、哈哈、你不、认识我啊}
 \newcommand{\id}{20230001、20230002、20230003、20230004、20230005、20230006、20230007}
 
-\newcommand{\customdate}{2034年2月12日}
 
+% \newcommand{\customdate}{\today}
+\newcommand{\customdate}{2034年2月12日}
+% =============================================
+
+% ========== 文档格式设置 ==========
 \setlength{\parindent}{2em}
 \geometry{left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm}
 \geometry{headsep=1.2cm}
@@ -31,7 +39,7 @@
 \usepackage{calc}
 \makeatletter
 \newcommand\dlmu[2][4cm]{%
-  \sbox0{#2}
+  \sbox0{#2}%
   \ifdim\wd0>#1\relax
     \hskip1pt\underline{%
       \hb@xt@ #1{%
@@ -50,6 +58,7 @@
 
 \hypersetup{colorlinks=true,linkcolor=black,citecolor=green}
 \definecolor{codebg}{rgb}{0.95,0.95,0.95}
+
 \setminted{
     bgcolor=codebg,
     linenos,
@@ -60,6 +69,7 @@
 \begin{document}
 \begin{sloppypar} 
 
+% ========== 封面页设计 ==========
 \begin{titlepage}
     \centering
     \includegraphics[width=9cm]{figure/badge.pdf}
@@ -80,6 +90,7 @@
     \newpage
 \end{titlepage}
 
+% ========== 目录设置 ==========
 \renewcommand{\contentsname}{目录}
 \pagenumbering{roman} 
 \thispagestyle{empty}
@@ -87,6 +98,10 @@
 \newpage
 \pagenumbering{arabic} 
 \hypersetup{linkcolor=red}
+
+% ==========================================
+% ========== 【重要】正文内容开始 ==========
+% ==========================================
 
 \section{基本元素示例}
 
@@ -97,6 +112,7 @@
 文档可以使用\verb|\section{}|、\verb|\subsection{}|和\verb|\subsubsection{}|进行结构化。
 
 \subsection{代码展示}
+
 \begin{minted}{python}
 def hello_world():
     print("Hello, World!")
@@ -174,7 +190,13 @@ if __name__ == "__main__:
 
 带页码引用：\cite[pp. 45-47]{wang2010zhongwen}
 
+% ==========================================
+% ========== 正文内容结束 ==========
+% ==========================================
+
+% ========== 参考文献部分 ==========
 \newpage
+% 将参考文献添加到目录中
 \addcontentsline{toc}{section}{参考文献}
 \bibliographystyle{plain}
 \bibliography{main}
