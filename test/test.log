@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.5)  8 APR 2025 18:12
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.5)  8 APR 2025 18:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**slight.tex
-(./slight.tex
+**test.tex
+(./test.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (f:/texlive/2024/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -1115,13 +1115,13 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ))
 Package hyperref Info: Option `colorlinks' set `true' on input line 52.
-runsystem(for ^%i in (pygmentize.exe pygmentize.bat pygmentize.cmd) do set > sl
-ight.aex <nul: /p x=^%~$PATH:i>> slight.aex)...executed.
+runsystem(for ^%i in (pygmentize.exe pygmentize.bat pygmentize.cmd) do set > te
+st.aex <nul: /p x=^%~$PATH:i>> test.aex)...executed.
 
-runsystem(del slight.aex)...executed.
+runsystem(del test.aex)...executed.
 
- (./slight.aux)
-\openout1 = `slight.aux'.
+ (./test.aux)
+\openout1 = `test.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
@@ -1251,9 +1251,9 @@ Package gensymb Info: Using \textohm for \ohm on input line 62.
 Package gensymb Info: Using \textmu for \micro on input line 62.
 \c@lstlisting=\count408
 Package hyperref Info: Link coloring ON on input line 62.
-(./slight.out) (./slight.out)
+(./test.out) (./test.out)
 \@outlinefile=\write6
-\openout6 = `slight.out'.
+\openout6 = `test.out'.
 
 File: figure/badge.pdf Graphic file (type pdf)
 <use figure/badge.pdf>
@@ -1307,9 +1307,9 @@ Underfull \hbox (badness 10000) detected at line 84
 
 [1
 
-] (./slight.toc)
+] (./test.toc)
 \tf@toc=\write7
-\openout7 = `slight.toc'.
+\openout7 = `test.toc'.
 
  [1]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
@@ -1317,26 +1317,26 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
  (f:/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-\openout4 = `slight.pyg'.
+\openout4 = `test.pyg'.
 
-runsystem(pygmentize -S default -f latex -P commandprefix=PYG > slight.out.pyg)
-...executed.
+runsystem(pygmentize -S default -f latex -P commandprefix=PYG > test.out.pyg)..
+.executed.
 
 
-(./slight.out.pyg)
+(./test.out.pyg)
 runsystem(pygmentize -l "python" -f latex -P commandprefix=PYG -F tokenmerge -P
- stripnl="False" -o slight.out.pyg slight.pyg)...executed.
+ stripnl="False" -o test.out.pyg test.pyg)...executed.
 
- (./slight.out.pyg
+ (./test.out.pyg
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2.
 )
-\openout5 = `slight.pyg'.
+\openout5 = `test.pyg'.
 
 runsystem(pygmentize -l "python" -f latex -P commandprefix=PYG -F tokenmerge -P
- stripnl="False" -o slight.out.pyg slight.pyg)...executed.
+ stripnl="False" -o test.out.pyg test.pyg)...executed.
 
- (./slight.out.pyg
+ (./test.out.pyg
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
 3.
 
@@ -1351,12 +1351,27 @@ File: figure/badge-horizonal.pdf Graphic file (type pdf)
 File: figure/badge-horizonal.pdf Graphic file (type pdf)
 <use figure/badge-horizonal.pdf>
  [2]
+
+LaTeX Warning: Citation `knuth1986texbook' on page 3 undefined on input line 21
+4.
+
+
+LaTeX Warning: Citation `vaswani2017attention' on page 3 undefined on input lin
+e 217.
+
+
+LaTeX Warning: Citation `brown2020language' on page 3 undefined on input line 2
+17.
+
+
+LaTeX Warning: Citation `wang2010zhongwen' on page 3 undefined on input line 22
+0.
+
 File: figure/badge-horizonal.pdf Graphic file (type pdf)
 <use figure/badge-horizonal.pdf>
- [3] (./slight.bbl)
-File: figure/badge-horizonal.pdf Graphic file (type pdf)
-<use figure/badge-horizonal.pdf>
- [4] (./slight.aux)
+[3]
+No file test.bbl.
+(./test.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1365,20 +1380,23 @@ L3 programming layer <2022/08/05>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `slight.out' has not changed.
-(rerunfilecheck)             Checksum: 4CFDF29F446DFEC956AD29AE8A09197B;1835.
-runsystem(del slight.pyg)...executed.
 
-runsystem(del slight.out.pyg)...executed.
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `test.out' has not changed.
+(rerunfilecheck)             Checksum: 7AA91077FC2CEE4C67BE56A2B56FF930;1755.
+runsystem(del test.pyg)...executed.
+
+runsystem(del test.out.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 33146 strings out of 476720
- 705303 string characters out of 5801445
+ 33147 strings out of 476720
+ 705753 string characters out of 5801445
  1936842 words of memory out of 5000000
- 54581 multiletter control sequences out of 15000+600000
- 600428 words of font info for 109 fonts, out of 8000000 for 9000
+ 54587 multiletter control sequences out of 15000+600000
+ 596158 words of font info for 107 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 102i,15n,107p,1200b,772s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,15n,107p,1198b,772s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on slight.pdf (6 pages).
+Output written on test.pdf (5 pages).
